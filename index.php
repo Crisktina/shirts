@@ -145,7 +145,7 @@
                         </a>
                       </li>
                       <li class="pe-3">
-                        <a href="#">
+                        <a href="view/login.php">
                           <svg class="user">
                             <use xlink:href="public/assets/icons/icons.svg#user"></use>
                           </svg>

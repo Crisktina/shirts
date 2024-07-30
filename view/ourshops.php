@@ -40,28 +40,20 @@
           <div class="display-header d-flex justify-content-between pb-3">
             <h2 class="display-7 text-dark text-uppercase">Nuestras tiendas</h2>
           </div>
-          <div class="swiper product-swiper">
-            <div class="swiper-wrapper">
-              <!-- productos: camisetas ===================================== -->
+          <div class="row gy-4">
             <?php require "../includes/autoload.models.php";
               require "../includes/autoload.controlers.php";
               $objeto = new ShopContr();
               $allShops = $objeto->allShopsList();
             foreach ($allShops as $shop): ?>
-              <div class="swiper-slide">
+              <div class="col-md-3">
                 <div class="product-card position-relative">
                   <div class="image-holder">
                     <img
-                      src=<?= htmlspecialchars($shop['shop_photo']); ?>
+                      src=<?='../'.htmlspecialchars($shop['shop_photo']); ?>
                       alt="product-item"
                       class="img-fluid"
                     />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Ver</a>
-                    </div>
                   </div>
                   <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                     <h3 class="card-title text-uppercase">
@@ -71,8 +63,6 @@
                 </div>
               </div>
             <?php endforeach; ?>
-            <!-- FIINNNN productos: camisetas ===================================== -->
-            </div>
           </div>
         </div>
       </div>

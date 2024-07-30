@@ -1,11 +1,16 @@
 <?php
 class Products extends Connection{
 
+    // DDBB information:
+    // prod_category 
+    // ---> 0 = camisetas
+    // ---> 1 = totebags
+
     //traer lista de camisetas de la bbdd 
     protected function getShirts() {
         try {
             // Prepare the SQL statement
-            $stmt = $this->connect()->prepare("SELECT * FROM products WHERE prod_category = 0;");
+            $stmt = $this->connect()->prepare("SELECT * FROM productos WHERE prod_category = 0;");
             $results = [];
     
             // Execute the statement
@@ -35,7 +40,7 @@ class Products extends Connection{
     protected function getTotebags() {
         try {
             // Prepare the SQL statement
-            $stmt = $this->connect()->prepare("SELECT * FROM products WHERE prod_category = 1;");
+            $stmt = $this->connect()->prepare("SELECT * FROM productos WHERE prod_category = 1;");
             $results = [];
     
             // Execute the statement

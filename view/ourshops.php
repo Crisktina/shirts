@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<?php include_once 'parts/head.html'; ?>
+<?php include_once 'parts/head.html'; 
+session_start();?>
   <body
     data-bs-spy="scroll"
     data-bs-target="#navbar"
@@ -8,11 +9,11 @@
     data-bs-smooth-scroll="true"
     tabindex="0"
   >
-  <?php include_once 'parts/header.html'; ?>
+  <?php include_once 'parts/header.php'; ?>
 
     <section
       id="yearly-sale"
-      class="bg-light-blue overflow-hidden mt-5 padding-large"
+      class="bg-light-blue overflow-hidden mt-5 padding-medium"
       style="
         background-image: url('images/single-image1.png');
         background-position: right;
@@ -30,43 +31,47 @@
         <div class="col-md-6 col-sm-12"></div>
       </div>
     </section>
-    
-    <section
-      id="our-shops"
-      class="product-store position-relative padding-large"
-    >
+
+        
+    <section id="our-store" class="padding-large">
       <div class="container">
         <div class="row">
-          <div class="display-header d-flex justify-content-between pb-3">
-            <h2 class="display-7 text-dark text-uppercase">Nuestras tiendas</h2>
-          </div>
           <div class="row gy-4">
-            <?php require "../includes/autoload.models.php";
+          <?php require "../includes/autoload.models.php";
               require "../includes/autoload.controlers.php";
               $objeto = new ShopContr();
               $allShops = $objeto->allShopsList();
             foreach ($allShops as $shop): ?>
-              <div class="col-md-3">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src=<?='../'.htmlspecialchars($shop['shop_photo']); ?>
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#"><?= htmlspecialchars($shop['shop_city']); ?></a>
-                    </h3>
+            <div class="row d-flex flex-wrap align-items-center">
+              <div class="col-lg-6">
+                <div class="image-holder mb-5">
+                  <img src=<?='../'.htmlspecialchars($shop['shop_photo']); ?> alt="our-store" class="img-fluid">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="locations-wrap">
+                  <div class="location-content d-flex flex-wrap">
+                    <div class="col-lg-6 col-sm-12">
+                      <div class="content-box text-dark pe-4 mb-5">
+                        <h2 class="card-title text-uppercase text-decoration-underline"><?= htmlspecialchars($shop['shop_name']); ?></h2>
+                        <div class="contact-address pt-3">
+                          <p><?= htmlspecialchars($shop['shop_address']); ?></p>
+                        </div>
+                        <div class="contact-number">
+                          <p>
+                            <a href="#"><?= htmlspecialchars($shop['shop_city']); ?></a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
             <?php endforeach; ?>
           </div>
         </div>
       </div>
-      <div class="swiper-pagination position-absolute text-center"></div>
     </section>
     
     <footer id="footer" class="overflow-hidden">

@@ -33,145 +33,110 @@
     data-bs-smooth-scroll="true"
     tabindex="0"
   >
-    <div class="search-popup">
-      <div class="search-popup-container">
-        <form role="search" method="get" class="search-form" action="">
-          <input
-            type="search"
-            id="search-form"
-            class="search-field"
-            placeholder="Type and press enter"
-            value=""
-            name="s"
-          />
-          <button type="submit" class="search-submit">
-            <svg class="search"><use xlink:href="public/assets/icons/icons.svg#search"></use></svg>
-          </button>
-        </form>
-
-        <h5 class="cat-list-title">Browse Categories</h5>
-
-        <ul class="cat-list">
-          <li class="cat-list-item">
-            <a href="#" title="Mobile Phones">Mobile Phones</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Smart Watches">Smart Watches</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Headphones">Headphones</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Accessories">Accessories</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Monitors">Monitors</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Speakers">Speakers</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Memory Cards">Memory Cards</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <header
-      id="header"
-      class="site-header header-scrolled fixed-top text-black bg-light"
-    >
-      <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
-        <div class="container-fluid">
+  <header
+  id="header"
+  class="site-header header-scrolled fixed-top text-black bg-light"
+>
+  <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.php">
+        <img src="images/main-logo.png" class="logo" />
+      </a>
+      <button
+        class="navbar-toggler d-flex d-lg-none order-3 p-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#bdNavbar"
+        aria-controls="bdNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <svg class="navbar-icon">
+          <use xlink:href="public/assets/icons/icons.svg#navbar-icon"></use>
+        </svg>
+      </button>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel"
+      >
+        <div class="offcanvas-header px-4 pb-0">
           <a class="navbar-brand" href="index.php">
             <img src="images/main-logo.png" class="logo" />
           </a>
           <button
-            class="navbar-toggler d-flex d-lg-none order-3 p-2"
             type="button"
-            data-bs-toggle="offcanvas"
+            class="btn-close btn-close-black"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
             data-bs-target="#bdNavbar"
-            aria-controls="bdNavbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <svg class="navbar-icon">
-              <use xlink:href="public/assets/icons/icons.svg#navbar-icon"></use>
-            </svg>
-          </button>
-          <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
-            id="bdNavbar"
-            aria-labelledby="bdNavbarOffcanvasLabel"
-          >
-            <div class="offcanvas-header px-4 pb-0">
-              <a class="navbar-brand" href="index.php">
-                <img src="images/main-logo.png" class="logo" />
-              </a>
-              <button
-                type="button"
-                class="btn-close btn-close-black"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-                data-bs-target="#bdNavbar"
-              ></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul
-                id="navbar"
-                class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3"
-              >
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="view/products.php">Productos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="view/ourshops.php">Nuestras tiendas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="view/mispedidos.php">Mis pedidos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="view/profile.php">Mis datos</a>
-                </li>
-                <li class="nav-item">
-                  <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3">
-                        <a href="#" class="search-button">
-                          <svg class="search">
-                            <use xlink:href="public/assets/icons/icons.svg#search"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="view/login.php">
-                          <svg class="user">
-                            <use xlink:href="public/assets/icons/icons.svg#user"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="cart.html">
-                          <svg class="cart">
-                            <use xlink:href="public/assets/icons/icons.svg#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+          ></button>
         </div>
-      </nav>
-    </header>
+        <div class="offcanvas-body">
+          <ul
+            id="navbar"
+            class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3"
+          >
+            <li class="nav-item">
+              <a class="nav-link me-4" href="view/products.php">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-4" href="view/ourshops.php">Nuestras tiendas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-4" href="view/mispedidos.php">Mis pedidos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-4" href="view/profile.php">Mis datos</a>
+            </li>
+            <li class="nav-item">
+              <div class="user-items ps-5">
+                <ul class="d-flex justify-content-end list-unstyled">
+                  <li class="pe-3">
+                    <a href="profile.php">
+                      <svg>
+                        <use
+                          xlink:href="public/assets/icons/icons.svg#user"
+                        ></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <?php 
+                  require 'model/env.php';
+ session_start();
+                  if (isset($_SESSION['username'])):?>
+                  <li>
+                    <a href="<?= env::HOSTPATH .'includes/logout.php'?>">
+                      <svg>
+                        <use
+                          xlink:href="public/assets/icons/icons.svg#logout"
+                        ></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <?php else : ?>
+                  <li>
+                    <a href="<?= env::HOSTPATH .'view/login.php'?>">
+                      Iniciar sesión
+                    </a>
+                  </li>
+                  <?php endif; ?>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- BANNER SECTION -->
     <section
       id="yearly-sale"
       class="bg-light-blue overflow-hidden mt-5 padding-large"
       style="
-        background-image: url('images/single-image1.png');
+        background-image: url('public/assets/images/single-image1.png');
         background-position: right;
         background-repeat: no-repeat;
       ">
@@ -192,9 +157,9 @@
         <div class="col-md-6 col-sm-12"></div>
       </div>
     </section>
-    
+    <!-- PRODUCTS SECTION -->
     <section
-      id="mobile-products"
+      id="camisetas"
       class="product-store position-relative padding-large"
     >
       <div class="container">
@@ -211,11 +176,17 @@
           </div>
           <div class="swiper product-swiper">
             <div class="swiper-wrapper">
+            <?php
+            require "includes/autoload.models.php";
+            require "includes/autoload.controlers.php";
+            $objeto3 = new productContr();
+            $allShirts = $objeto3->allShirtsList();
+            foreach ($allShirts as $index => $shirt): ?>
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
                     <img
-                      src="images/product-item1.jpg"
+                      src=<?=htmlspecialchars($shirt['prod_photo']); ?>
                       alt="product-item"
                       class="img-fluid"
                     />
@@ -232,118 +203,13 @@
                     class="card-detail d-flex justify-content-between align-items-baseline pt-3"
                   >
                     <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 10</a>
+                      <a href="#"><?= htmlspecialchars($shirt['prod_name']); ?></a>
                     </h3>
-                    <span class="item-price text-primary">€980</span>
+                    <span class="item-price text-primary"><?= htmlspecialchars($shirt['prod_price']); ?> €</span>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item2.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 11</a>
-                    </h3>
-                    <span class="item-price text-primary">€1100</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item3.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
-                        </svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 8</a>
-                    </h3>
-                    <span class="item-price text-primary">€780</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item4.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
-                          </svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 13</a>
-                    </h3>
-                    <span class="item-price text-primary">€1500</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item5.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use></svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Iphone 12</a>
-                    </h3>
-                    <span class="item-price text-primary">€1300</span>
-                  </div>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
@@ -351,7 +217,7 @@
       <div class="swiper-pagination position-absolute text-center"></div>
     </section>
     <section
-      id="smart-watches"
+      id="totebags"
       class="product-store padding-large position-relative"
     >
       <div class="container">
@@ -368,38 +234,15 @@
           </div>
           <div class="swiper product-watch-swiper">
             <div class="swiper-wrapper">
+            <?php
+            $objeto4 = new ProductContr();
+            $allTotebags = $objeto4->allTotebagsList();
+            foreach ($allTotebags as $index => $totebag): ?>
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
                     <img
-                      src="images/product-item6.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
-                        </svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">Pink watch</a>
-                    </h3>
-                    <span class="item-price text-primary">€870</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item7.jpg"
+                      src=<?=htmlspecialchars($totebag['prod_photo']); ?>
                       alt="product-item"
                       class="img-fluid"
                     />
@@ -416,91 +259,13 @@
                     class="card-detail d-flex justify-content-between align-items-baseline pt-3"
                   >
                     <h3 class="card-title text-uppercase">
-                      <a href="#">Heavy watch</a>
+                      <a href="#"><?= htmlspecialchars($totebag['prod_name']); ?></a>
                     </h3>
-                    <span class="item-price text-primary">€680</span>
+                    <span class="item-price text-primary"><?= htmlspecialchars($totebag['prod_price']); ?> €</span>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item8.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
-                        </svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">spotted watch</a>
-                    </h3>
-                    <span class="item-price text-primary">€750</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item9.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
-                        </svg></a>
-                    </div>
-                  </div>
-                  <div
-                    class="card-detail d-flex justify-content-between align-items-baseline pt-3"
-                  >
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">black watch</a>
-                    </h3>
-                    <span class="item-price text-primary">€650</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <img
-                      src="images/product-item10.jpg"
-                      alt="product-item"
-                      class="img-fluid"
-                    />
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black"
-                        >Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
-                        </svg></a>
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="#">black watch</a>
-                    </h3>
-                    <span class="item-price text-primary">€750</span>
-                  </div>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
@@ -604,7 +369,7 @@
       </div>
       <div class="swiper-pagination"></div>
     </section>
-    
+<!-- INSTAGRAM SECTION -->
     <section
       id="instagram"
       class="padding-large overflow-hidden no-padding-top"
@@ -617,11 +382,11 @@
           <div class="d-flex flex-wrap">
             <figure class="instagram-item pe-2">
               <a
-                href="https://templatesjungle.com/"
+                href="https://instagram.com/"
                 class="image-link position-relative"
               >
                 <img
-                  src="images/insta-item1.jpg"
+                  src="public/assets/images/instagram/insta-item1.jpg"
                   alt="instagram"
                   class="insta-image"
                 />
@@ -636,11 +401,11 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a
-                href="https://templatesjungle.com/"
+                href="https://instagram.com/"
                 class="image-link position-relative"
               >
                 <img
-                  src="images/insta-item2.jpg"
+                  src="public/assets/images/instagram/insta-item2.jpg"
                   alt="instagram"
                   class="insta-image"
                 />
@@ -655,11 +420,11 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a
-                href="https://templatesjungle.com/"
+                href="https://instagram.com/"
                 class="image-link position-relative"
               >
                 <img
-                  src="images/insta-item3.jpg"
+                  src="public/assets/images/instagram/insta-item3.jpg"
                   alt="instagram"
                   class="insta-image"
                 />
@@ -674,11 +439,11 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a
-                href="https://templatesjungle.com/"
+                href="https://instagram.com/"
                 class="image-link position-relative"
               >
                 <img
-                  src="images/insta-item4.jpg"
+                  src="public/assets/images/instagram/insta-item4.jpg"
                   alt="instagram"
                   class="insta-image"
                 />
@@ -693,11 +458,11 @@
             </figure>
             <figure class="instagram-item pe-2">
               <a
-                href="https://templatesjungle.com/"
+                href="https://instagram.com/"
                 class="image-link position-relative"
               >
                 <img
-                  src="images/insta-item5.jpg"
+                  src="public/assets/images/instagram/insta-item5.jpg"
                   alt="instagram"
                   class="insta-image"
                 />

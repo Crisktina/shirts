@@ -1,13 +1,13 @@
 <?php
 class User extends Connection{
 
-    protected function setUser($username, $password, $email){
+    protected function setUser($username, $password, $email, $userfullname, $token){
         $error = false;
-        $stmt = $this->connect()->prepare("INSERT INTO users (users_uid, users_pwd, users_email) VALUES (?,?,?)");
+        $stmt = $this->connect()->prepare("INSERT INTO usuarios (user_nickname, user_pwd, user_mail, user_fullname, token) VALUES (?,?,?,?,?)");
 
         $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-        if(!$stmt->execute(array($username, $hashedPwd, $email))){
+        if(!$stmt->execute(array($username, $hashedPwd, $email, $userfullname, $token))){
             $error = true;
         }
         $stmt = null;
@@ -16,10 +16,85 @@ class User extends Connection{
     }
 
     protected function checkUser($username, $email){
-        $stmt = $this->connect()->prepare("SELECT users_uid FROM users WHERE users_uid = ? OR users_email = ?;");
+        $error = 0;
+        $stmt = $this->connect()->prepare("SELECT user_nickname FROM usuarios WHERE user_nickname = ? OR user_mail = ?;");
         if(!$stmt->execute(array($username, $email))){
+            $error = 1;
+        }
+        if($stmt->rowCount()>0){
+            $error = 2;
+        }
+        $stmt = null;
+        return $error;
+    }
+
+    protected function verifyLoginUser($username, $password){
+        $error = 0;
+        $stmt = $this->connect()->prepare("SELECT user_pwd from usuarios WHERE user_nickname = ? and status=?");
+        $status = 1;
+        if(!$stmt->execute(array($username, $status))){
+            $error = 1;
+        }
+
+        if($stmt->rowCount()>0){
+            $res = $stmt->fetchAll();
+            $hashedPwd = $res[0]['user_pwd'];
+            if(password_verify($password, $hashedPwd)==false){
+                $error = 2;
+            }else{
+                $_SESSION["username"] = $username;
+            }  
+        }else{
+            $error = 2;
+        }
+        $stmt = null;
+        return $error;
+
+    }
+
+
+    protected function setTokenUser($token, $email){
+        $error = false;
+        $stmt = $this->connect()->prepare("UPDATE usuarios set token= ? where user_mail = ?");
+        
+        if(!$stmt->execute(array($token, $email))){
+           $error = true;
+            
+        }
+        $stmt = null;
+        return $error;
+    }
+
+    protected function setNewPassword($token, $password){
+        $error = false;
+        $stmt = $this->connect()->prepare("UPDATE usuarios set user_pwd= ?, token=null, created_at=null where token = ?");
+        
+        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+        if(!$stmt->execute(array($hashedPwd, $token))){
+           $error = true;   
+        }
+
+        $stmt = null;
+        return $error;
+    }
+
+    protected function setStatus($token){
+        $error = false;
+        $stmt = $this->connect()->prepare("UPDATE usuarios set status= ?, token=null, created_at=null where token = ?");
+        $status = 1;
+        if(!$stmt->execute(array($status, $token))){
+           $error = true;   
+        }
+
+        $stmt = null;
+        return $error;
+    }
+
+    protected function checkUserByEmail($email){
+        $stmt = $this->connect()->prepare("SELECT user_nickname FROM usuarios WHERE user_mail = ?;");
+        if(!$stmt->execute(array($email))){
             $stmt = null;
-            header("Location: .../view/signup.html?error=stmtfailed");
+            header("Location: ../views/forgotpassword.php?error=stmtfailed");
             exit();
         }
         $resultCheck = false;
@@ -30,33 +105,42 @@ class User extends Connection{
         return $resultCheck;
     }
 
-    protected function verifyLoginUser($username, $password){
-        $error = 0;
-        $stmt = $this->connect()->prepare("SELECT users_pwd from users WHERE users_uid = ?");
-        if(!$stmt->execute(array($username))){
-            $error = 1;
+    protected function checkToken($token){
+        $stmt = $this->connect()->prepare("SELECT user_nickname FROM usuarios WHERE token = ?;");
+        if(!$stmt->execute(array($token))){
+            $stmt = null;
+            header("Location: ../view/newpassword.php?error=stmtfailed");
+            exit();
+        }
+        $resultCheck = false;
+        if($stmt->rowCount()>0){
+            $resultCheck = true;
         }
 
+        return $resultCheck;
+    }
+
+    protected function checkTokenExpired($token){
+        $stmt = $this->connect()->prepare("SELECT timestampdiff(MINUTE, created_at, now())as diff FROM usuarios WHERE token = ?;");
+        if(!$stmt->execute(array($token))){
+            $stmt = null;
+            header("Location: ../view/newpassword.php?error=stmtfailed");
+            exit();
+        }
+        $diff = -1;
         if($stmt->rowCount()>0){
             $res = $stmt->fetchAll();
-            $hashedPwd = $res[0]['users_pwd'];
-            if(password_verify($password, $hashedPwd)==false){
-                $error = 2;
-            }else{
-                $_SESSION["username"] = $username;
-            }
-        }else{
-            $error = 2;
+            $diff = $res[0]['diff'];
         }
-        $stmt = null;
-        return $error;
 
+        return $diff;
     }
+
     //traer el id y el username del usuario de la bbdd 
     protected function getUser($username) {
         try {
             // Prepare the SQL statement
-            $stmt = $this->connect()->prepare("SELECT users_id, users_uid FROM users WHERE users_uid = ?;");
+            $stmt = $this->connect()->prepare("SELECT user_id, user_nickname FROM usuarios WHERE user_nickname = ?;");
             $results = [];
     
             // Execute the statement
@@ -82,5 +166,8 @@ class User extends Connection{
             return [];
         }
     }
+
+
+
 
 }

@@ -3,8 +3,13 @@ spl_autoload_register("myAutoLoadControler");
 
 function myAutoLoadControler($classname){
     $extension = ".php";
-    $path = "../controller/";
-    $fullpath = $path.$classname.$extension;
+    $fromView = "";
+    $path = "controller/";
+    
+if(str_contains($_SERVER['REQUEST_URI'], 'view')|| str_contains($_SERVER['REQUEST_URI'], 'includes')){
+    $fromView = "../";
+} 
+$fullpath = $fromView.$path.$classname.$extension;
 
     if(!file_exists($fullpath)){
         return false;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<?php include_once 'parts/head.html'; ?>
+<?php include_once 'parts/head.html'; 
+session_start();?>
   <body
     data-bs-spy="scroll"
     data-bs-target="#navbar"
@@ -8,7 +9,7 @@
     data-bs-smooth-scroll="true"
     tabindex="0"
   >
-  <?php include_once 'parts/header.html'; ?>
+  <?php include_once 'parts/header.php'; ?>
   
     <section
       class="mt-4 padding-medium "
@@ -36,7 +37,7 @@
             require "../includes/autoload.controlers.php";
             $objeto1 = new ProductContr();
             $allShirts = $objeto1->allShirtsList();
-            foreach ($allShirts as $shirt): ?>
+            foreach ($allShirts as $index => $shirt): ?>
               <div class="col-md-3">
                 <div class="product-card position-relative">
                   <div class="image-holder">

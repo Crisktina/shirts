@@ -39,46 +39,45 @@
           ></button>
         </div>
         <div class="offcanvas-body">
+          <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
           <ul
             id="navbar"
-            class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3"
-          >
+            class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link me-4 active" href="products.php">Productos</a>
+              <a class="nav-link me-4 <?= ($currentPage == 'products.php') ? 'active' : '' ?>" href="products.php">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="ourshops.php">Nuestras tiendas</a>
+              <a class="nav-link me-4 <?= ($currentPage == 'ourshops.php') ? 'active' : '' ?>" href="ourshops.php">Nuestras tiendas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="mispedidos.php">Mis pedidos</a>
+              <a class="nav-link me-4 <?= ($currentPage == 'mispedidos.php') ? 'active' : '' ?>" href="mispedidos.php">Mis pedidos</a>
+            </li>
+              <?php 
+             require '../model/env.php';
+             $user =$_SESSION['username'];
+             if (isset($user)):?>
+            <li class="nav-item">
+              <a class="nav-link me-4 <?= ($currentPage == 'profile.php') ? 'active' : '' ?>" href="profile.php">
+                <?=$user;?>
+                <svg>
+                  <use xlink:href="../public/assets/icons/icons.svg#user"></use>
+                </svg>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="profile.php">Mis datos</a>
+              <a class="nav-link me-4" href="<?= env::HOSTPATH .'includes/logout.php'?>">
+                <svg>
+                  <use xlink:href="../public/assets/icons/icons.svg#logout"></use>
+                </svg>
+              </a>
             </li>
+              <?php else : ?>
             <li class="nav-item">
-              <div class="user-items ps-5">
-                <ul class="d-flex justify-content-end list-unstyled">
-                  <li class="pe-3">
-                    <a href="profile.php">
-                      <svg>
-                        <use
-                          xlink:href="../public/assets/icons/icons.svg#user"
-                        ></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.php">
-                      <svg>
-                        <use
-                          xlink:href="../public/assets/icons/icons.svg#logout"
-                        ></use>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <a class="nav-link me-4 <?= ($currentPage == 'login.php') ? 'active' : '' ?>" href="<?= env::HOSTPATH .'view/login.php'?>">
+                  Iniciar sesión
+                </a>
             </li>
+              <?php endif; ?>
           </ul>
         </div>
       </div>

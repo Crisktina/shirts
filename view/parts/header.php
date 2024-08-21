@@ -1,7 +1,6 @@
 <header
   id="header"
-  class="site-header header-scrolled fixed-top text-black bg-light"
->
+  class="site-header header-scrolled fixed-top text-black bg-light">
   <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
     <div class="container-fluid">
       <a class="navbar-brand" href="../index.php">
@@ -14,8 +13,7 @@
         data-bs-target="#bdNavbar"
         aria-controls="bdNavbar"
         aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-label="Toggle navigation">
         <svg class="navbar-icon">
           <use xlink:href="../public/assets/icons/icons.svg#navbar-icon"></use>
         </svg>
@@ -24,8 +22,7 @@
         class="offcanvas offcanvas-end"
         tabindex="-1"
         id="bdNavbar"
-        aria-labelledby="bdNavbarOffcanvasLabel"
-      >
+        aria-labelledby="bdNavbarOffcanvasLabel">
         <div class="offcanvas-header px-4 pb-0">
           <a class="navbar-brand" href="../index.php">
             <img src="images/main-logo.png" class="logo" />
@@ -35,8 +32,7 @@
             class="btn-close btn-close-black"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
-            data-bs-target="#bdNavbar"
-          ></button>
+            data-bs-target="#bdNavbar"></button>
         </div>
         <div class="offcanvas-body">
           <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
@@ -52,32 +48,33 @@
             <li class="nav-item">
               <a class="nav-link me-4 <?= ($currentPage == 'mispedidos.php') ? 'active' : '' ?>" href="mispedidos.php">Mis pedidos</a>
             </li>
-              <?php 
-             require '../model/env.php';
-             $user =$_SESSION['username'];
-             if (isset($user)):?>
-            <li class="nav-item">
-              <a class="nav-link me-4 <?= ($currentPage == 'profile.php') ? 'active' : '' ?>" href="profile.php">
-                <?=$user;?>
-                <svg>
-                  <use xlink:href="../public/assets/icons/icons.svg#user"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-4" href="<?= env::HOSTPATH .'includes/logout.php'?>">
-                <svg>
-                  <use xlink:href="../public/assets/icons/icons.svg#logout"></use>
-                </svg>
-              </a>
-            </li>
-              <?php else : ?>
-            <li class="nav-item">
-                <a class="nav-link me-4 <?= ($currentPage == 'login.php') ? 'active' : '' ?>" href="<?= env::HOSTPATH .'view/login.php'?>">
+            <?php
+            require '../model/env.php';
+            if (isset($_SESSION['username'])): ?>
+              <li class="nav-item">
+                <a class="nav-link user-items  ps-2 <?= ($currentPage == 'profile.php') ? 'active' : '' ?>" href="profile.php">
+                  <?php if (isset($_SESSION['username'])) {
+                    echo htmlspecialchars($_SESSION['username']);
+                  }; ?>
+                  <svg>
+                    <use xlink:href="../public/assets/icons/icons.svg#user"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link user-items ps-2 me-4" href="<?= env::HOSTPATH . 'includes/logout.php' ?>">
+                  <svg>
+                    <use xlink:href="../public/assets/icons/icons.svg#logout"></use>
+                  </svg>
+                </a>
+              </li>
+            <?php else : ?>
+              <li class="nav-item">
+                <a class="nav-link me-4 <?= ($currentPage == 'login.php') ? 'active' : '' ?>" href="<?= env::HOSTPATH . 'view/login.php' ?>">
                   Iniciar sesión
                 </a>
-            </li>
-              <?php endif; ?>
+              </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>

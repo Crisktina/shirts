@@ -1,20 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php 
+<html>
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php?nosesion");
+}
+include_once 'parts/head.html';
+?>
+
+<body
+    data-bs-spy="scroll"
+    data-bs-target="#navbar"
+    data-bs-root-margin="0px 0px -40%"
+    data-bs-smooth-scroll="true"
+    tabindex="0">
+
+    <?php
+    include_once 'parts/header.php';
     $token = "";
-    if(isset($_GET['token'])) $token = $_GET['token'];
+    if (isset($_GET['token'])) $token = $_GET['token'];
     ?>
-   <form method="post" action="../includes/newPass-inc.php">
-   <input type="password" name="password" placeholder="Introduce your password"><br>
-   <input type="password" name="repeatPassword" placeholder="Introduce your password again"><br>
-   <input type="hidden" name="token" value="<?= $token?>">
-    <input type="submit" name="send" value="Send">
-   </form> 
+
+    <div class="container mt-3 padding-large">
+        <h2 class="display-6 fw-normal text-dark text-uppercase">Nueva contraseña</h2>
+        <form class="form-group padding-small" method="post" action="../includes/newPass-inc.php">
+            <p>Escribe tu nueva contraseña.</p>
+            <div class="row">
+                <div class="col-lg-6 mb-3">
+                    <input class="form-control ps-3" type="password" name="password" placeholder="Contraseña *">
+                </div>
+                <div class="col-lg-6">
+                    <input class="form-control ps-3" type="password" name="repeatPassword" placeholder="Repetir contraseña *">
+                </div>
+                <input type="hidden" name="token" value="<?= $token ?>">
+                <div class="col-lg-12 mt-3">
+                    <input class="btn btn-medium btn-black text-uppercase btn-rounded-none" type="submit" name="send" value="Enviar">
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php include_once 'parts/footer.html'; ?>
+    <script src="../public/js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../public/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../public/js/plugins.js"></script>
+    <script type="text/javascript" src="../public/js/script.js"></script>
 </body>
+
 </html>

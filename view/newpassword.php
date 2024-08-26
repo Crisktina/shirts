@@ -16,6 +16,8 @@ include_once 'parts/head.html';
     include_once 'parts/header.php';
     $token = "";
     if (isset($_GET['token'])) $token = $_GET['token'];
+
+    include_once '../includes/newPass-validation.php';
     ?>
 
     <div class="container mt-3 padding-large">
@@ -24,10 +26,12 @@ include_once 'parts/head.html';
             <p>Escribe tu nueva contraseña.</p>
             <div class="row">
                 <div class="col-lg-6 mb-3">
-                    <input class="form-control ps-3" type="password" name="password" placeholder="Contraseña *">
+                    <input class="form-control <?= htmlspecialchars($passClassErr); ?>  ps-3" type="password" name="password" placeholder="Contraseña *" required>
+                    <?= $passErr; ?>
                 </div>
                 <div class="col-lg-6">
-                    <input class="form-control ps-3" type="password" name="repeatPassword" placeholder="Repetir contraseña *">
+                    <input class="form-control <?= htmlspecialchars($passRClassErr); ?>  ps-3" type="password" name="repeatPassword" placeholder="Repetir contraseña *" required>
+                    <?= $passRErr; ?>
                 </div>
                 <input type="hidden" name="token" value="<?= $token ?>">
                 <div class="col-lg-12 mt-3">

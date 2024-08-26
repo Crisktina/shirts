@@ -94,6 +94,10 @@ class UserContr extends User
             header("Location: ../view/register.php?error=invalidemail");
             exit();
         }
+        if ($this->invalidPassword() == false) {
+            header("Location: ../view/register.php?error=invalidpwd");
+            exit();
+        }
         if ($this->pwdMatch() == false) {
             header("Location: ../view/register.php?error=pwdmatch");
             exit();
@@ -123,8 +127,12 @@ class UserContr extends User
     {
 
         //validation
-        if ($this->emptyInput($this->username) == false || $this->emptyInput($this->password) == false) {
-            header("Location: ../view/login.php?error=emptyInput");
+        if ($this->emptyInput($this->username) == false) {
+            header("Location: ../view/login.php?error=emptyInputUser");
+            exit();
+        }
+        if ($this->emptyInput($this->password) == false) {
+            header("Location: ../view/login.php?error=emptyInputPassword");
             exit();
         }
 
@@ -146,6 +154,10 @@ class UserContr extends User
             header("Location: ../view/forgotpassword.php?error=emptyEmail");
             exit();
         }
+        if ($this->invalidEmail() == false) {
+            header("Location: ../view/forgotpassword.php?error=invalidemail");
+            exit();
+        }
 
         if ($this->checkUserByEmail($this->email) == false) {
             header("Location: ../view/forgotpassword.php?error=emailnotFound");
@@ -165,6 +177,10 @@ class UserContr extends User
     {
         if ($this->emptyInput($this->password) == false || $this->emptyInput($this->repeatPwd) == false) {
             header("Location: ../view/newpassword.php?error=emptyInput&token=$this->token");
+            exit();
+        }
+        if ($this->invalidPassword() == false) {
+            header("Location: ../view/newpassword.php?error=invalidpwd&token=$this->token");
             exit();
         }
         if ($this->pwdMatch() == false) {
@@ -233,6 +249,14 @@ class UserContr extends User
     {
         $result = true;
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $result = false;
+        }
+        return $result;
+    }
+    private function invalidPassword()
+    {
+        $result = true;
+        if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $this->password)) {
             $result = false;
         }
         return $result;

@@ -3,6 +3,7 @@
 <?php
 session_start();
 include_once 'parts/head.html';
+include_once '../includes/forgotPass-validation.php';
 ?>
 
 <body
@@ -12,6 +13,7 @@ include_once 'parts/head.html';
     data-bs-smooth-scroll="true"
     tabindex="0">
     <?php include_once 'parts/header.php'; ?>
+
     <section class="container-grid padding-large position-relative overflow-hidden">
         <div class="container">
             <div class="row">
@@ -25,21 +27,19 @@ include_once 'parts/head.html';
                     <div class="col-md-5 col-sm-12">
                         <form class="subscription-form validate" action="../includes/forgotPass-inc.php" method="POST">
                             <div class="input-group flex-wrap">
-                                <input class="form-control btn-rounded-none" type="email" name="EMAIL" placeholder="Tu email aquí" required="">
-                                <input class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="send" value="Enviar">Subscribe</input>
+                                <input class="form-control  <?= htmlspecialchars($emailClassErr); ?> btn-rounded-none" type="email" name="email" placeholder="Tu email aquí" required>
+                                <input class="btn btn-medium btn-primary text-uppercase btn-rounded-none" type="submit" name="send" value="Enviar">
+                                <?= $emailErr; ?>
+
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+            <?= $sendOk; ?>
         </div>
     </section>
-    <?php
-    //TODO:poner mensaje al usuario un poco más currado
-    if (isset($_GET['msg']) == 'Messagesent!') {
-        echo 'Mensaje enviado. Revisa tu correo para introducir la nueva contraseña.';
-    }
-    ?>
+
 
     <?php include_once 'parts/footer.html'; ?>
     <script src="../public/js/jquery-1.11.0.min.js"></script>

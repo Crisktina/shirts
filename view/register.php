@@ -8,7 +8,10 @@
   data-bs-root-margin="0px 0px -40%"
   data-bs-smooth-scroll="true"
   tabindex="0">
-  <?php include_once 'parts/header.php'; ?>
+  <?php include_once 'parts/header.php';
+  //validaciones login que insertan div de error
+  include_once '../includes/register-validation.php';
+  ?>
 
   <div class="container padding-large">
     <form class="form-group" action="../includes/signup-inc.php" method="post">
@@ -17,15 +20,20 @@
           <h2 class="display-7 text-uppercase text-dark pb-4">CREAR CUENTA</h2>
           <div class="billing-details">
             <label for="fname">Nickname *</label>
-            <input type="text" id="fname" name="uid" class="form-control mt-2 mb-4 ps-3">
+            <input type="text" id="fname" name="uid" class="form-control <?= htmlspecialchars($userClassErr); ?> mt-2 mb-4 ps-3">
+            <?= $userErr; ?>
             <label for="lname">Nombre completo *</label>
-            <input type="text" id="lname" name="userfullname" class="form-control mt-2 mb-4 ps-3">
+            <input type="text" id="lname" name="userfullname" class="form-control <?= htmlspecialchars($fullnClassErr); ?> mt-2 mb-4 ps-3">
+            <?= $fullnErr; ?>
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" class="form-control mt-2 mb-4 ps-3">
+            <input type="email" id="email" name="email" class="form-control <?= htmlspecialchars($emailClassErr); ?> mt-2 mb-4 ps-3">
+            <?= $emailErr; ?>
             <label for="pwd">Contraseña*</label>
-            <input type="password" id="pwd" name="pwd" class="form-control mt-2 mb-4 ps-3">
+            <input type="password" id="pwd" name="pwd" class="form-control <?= htmlspecialchars($passClassErr); ?> mt-2 mb-4 ps-3">
+            <?= $passErr; ?>
             <label for="repeatPwd">Repetir contraseña*</label>
-            <input type="password" id="repeatPwd" name="repeatPwd" class="form-control mt-2 mb-4 ps-3">
+            <input type="password" id="repeatPwd" name="repeatPwd" class="form-control <?= htmlspecialchars($passRClassErr); ?> mt-2 mb-4 ps-3">
+            <?= $passRErr; ?>
             <input class="btn btn-dark btn-medium text-uppercase btn-rounded-none" type="submit" name="send" value="Enviar">
           </div>
         </div>

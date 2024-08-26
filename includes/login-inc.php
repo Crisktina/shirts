@@ -33,6 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
 
 
 
+
+
     //Volver a la pagina inicial
     header("Location: ../index.php?succes-login");
 }

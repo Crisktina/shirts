@@ -143,16 +143,16 @@ class User extends Connection
         return $diff;
     }
 
-    //traer datos del usuario de la bbdd 
-    protected function getUser($username)
+    //traer datos del usuario de la bbdd para almacenar en session
+    protected function getUser($username, $email, $userfullname)
     {
         try {
             // Prepare the SQL statement
-            $stmt = $this->connect()->prepare("SELECT user_id, user_nickname, user_mail, user_fullname FROM usuarios WHERE user_nickname = ?;");
+            $stmt = $this->connect()->prepare("SELECT user_id, user_nickname, user_mail, user_fullname FROM usuarios WHERE user_nickname = ? OR user_mail=? OR user_fullname=?;");
             $results = [];
 
             // Execute the statement
-            if (!$stmt->execute(array($username))) {
+            if (!$stmt->execute(array($username, $email, $userfullname))) {
                 // Log the error if execution fails
                 error_log("Failed to execute query: " . implode(", ", $stmt->errorInfo()));
                 $stmt = null;
@@ -172,5 +172,42 @@ class User extends Connection
             error_log("Database error: " . $e->getMessage());
             return [];
         }
+    }
+
+    //modificar datos del usuario desde el perfil
+    protected function setNewNickname($username, $userId)
+    {
+        $error = false;
+        $stmt = $this->connect()->prepare("UPDATE usuarios set user_nickname= ? where user_id = ?");
+
+        if (!$stmt->execute(array($username, $userId))) {
+            $error = true;
+        }
+        $stmt = null;
+        return $error;
+    }
+    //modificar datos del usuario desde el perfil
+    protected function setNewEmail($email, $userId)
+    {
+        $error = false;
+        $stmt = $this->connect()->prepare("UPDATE usuarios set user_mail= ? where user_id = ?");
+
+        if (!$stmt->execute(array($email, $userId))) {
+            $error = true;
+        }
+        $stmt = null;
+        return $error;
+    }
+    //modificar datos del usuario desde el perfil
+    protected function setNewFullname($userfullname, $userId)
+    {
+        $error = false;
+        $stmt = $this->connect()->prepare("UPDATE usuarios set user_fullname= ? where user_id = ?");
+
+        if (!$stmt->execute(array($userfullname, $userId))) {
+            $error = true;
+        }
+        $stmt = null;
+        return $error;
     }
 }

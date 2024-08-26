@@ -258,7 +258,7 @@ class UserContr extends User
     public function idUser()
     {
 
-        $res = $this->getUser($this->username);
+        $res = $this->getUser($this->username, $this->email, $this->userfullname);
         return $res;
     }
 
@@ -376,8 +376,84 @@ class UserContr extends User
         } else {
             //TODO: mostrar mensaje conforme el usuario tiene que activar la cuenta para que pueda hacer login
             //header("Location: ../includes/activacio.php?msg=Message sent!");
-            //exit();∫
+            //exit();
 
+        }
+    }
+
+    //modificar los datos del usuario desde el perfil
+    public function updateNickname($userId)
+    {
+        //validation
+        if ($this->emptyInput($this->username) == false) {
+            header("Location: ../view/profile.php?error=emptyInput");
+            exit();
+        }
+        if ($this->invalidUsername() == false) {
+            header("Location: ../view/profile.php?error=invaliduid");
+            exit();
+        }
+        if ($this->usernameTakenCheck() == 2) {
+            header("Location: ../view/profile.php?error=UserTaken");
+            exit();
+        }
+        if ($this->usernameTakenCheck() == 1) {
+            header("Location: ../view/profile.php?error=FailedStmt");
+            exit();
+        }
+        //añadir a db
+        if ($this->setNewNickname($this->username, $userId)) {
+
+            header("Location: ../view/profile.php?error=FailedStmt");
+            exit();
+        }
+    }
+
+    //modificar los datos del usuario desde el perfil
+    public function updateEmail($userId)
+    {
+        //validation
+        if ($this->emptyInput($this->email) == false) {
+            header("Location: ../view/profile.php?error=emptyInput");
+            exit();
+        }
+        if ($this->invalidEmail() == false) {
+            header("Location: ../view/profile.php?error=invalidemail");
+            exit();
+        }
+        if ($this->usernameTakenCheck() == 2) {
+            header("Location: ../view/profile.php?error=MailTaken");
+            exit();
+        }
+        if ($this->usernameTakenCheck() == 1) {
+            header("Location: ../view/profile.php?error=FailedStmt");
+            exit();
+        }
+        //añadir a db
+        if ($this->setNewEmail($this->email, $userId)) {
+
+            header("Location: ../view/profile.php?error=FailedStmt");
+            exit();
+        }
+    }
+
+    //modificar los datos del usuario desde el perfil
+    public function updateFullname($userId)
+    {
+        //validation
+        if ($this->emptyInput($this->userfullname) == false) {
+            header("Location: ../view/profile.php?error=emptyInput");
+            exit();
+        }
+        if ($this->invalidUserfullname() == false) {
+            header("Location: ../view/profile.php?error=invalidufullname");
+            exit();
+        }
+        //añadir a db
+        if ($this->setNewFullname($this->userfullname, $userId)) {
+
+            header("Location: ../view/profile.php?error=FailedStmt");
+            exit();
         }
     }
 }

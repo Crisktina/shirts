@@ -1,3 +1,4 @@
+<?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
 <header
   id="header"
   class="site-header header-scrolled fixed-top text-black bg-light">
@@ -35,7 +36,6 @@
             data-bs-target="#bdNavbar"></button>
         </div>
         <div class="offcanvas-body">
-          <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
           <ul
             id="navbar"
             class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">

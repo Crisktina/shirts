@@ -1,7 +1,7 @@
 <?php
 
 //Validar inputs
-$userErr = $userClassErr = $passErr = $passClassErr = '';
+$userErr = $userClassErr = $passErr = $passClassErr = $sendOk = '';
 
 if (isset($_GET['error'])) {
     $error = $_GET['error'];

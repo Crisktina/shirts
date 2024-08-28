@@ -26,43 +26,43 @@ session_start(); ?>
       <div class="col-md-6 col-sm-12"></div>
     </div>
   </section>
-
-  <section id="our-store" class="padding-large">
+  <section class="padding-large">
     <div class="container">
       <div class="row">
-        <div class="row gy-4">
-          <?php require "../includes/autoload.models.php";
-          require "../includes/autoload.controlers.php";
-          $objeto = new ShopContr();
-          $allShops = $objeto->allShopsList();
-          foreach ($allShops as $shop): ?>
-            <div class="row d-flex flex-wrap align-items-center">
-              <div class="col-lg-6">
-                <div class="image-holder mb-5">
-                  <img src=<?= '../' . htmlspecialchars($shop['shop_photo']); ?> alt="our-store" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="locations-wrap">
-                  <div class="location-content d-flex flex-wrap">
-                    <div class="col-lg-6 col-sm-12">
-                      <div class="content-box text-dark pe-4 mb-5">
-                        <h2 class="card-title text-uppercase text-decoration-underline"><?= htmlspecialchars($shop['shop_name']); ?></h2>
-                        <div class="contact-address pt-3">
-                          <p><?= htmlspecialchars($shop['shop_address']); ?></p>
-                        </div>
-                        <div class="contact-number">
-                          <p>
-                            <a href="#"><?= htmlspecialchars($shop['shop_city']); ?></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+        <div class="col-lg-12">
+          <div class="comments-wrap">
+            <div class="comment-list padding-small">
+
+              <?php require "../includes/autoload.models.php";
+              require "../includes/autoload.controlers.php";
+              $objeto = new ShopContr();
+              $allShops = $objeto->allShopsList();
+              foreach ($allShops as $shop): ?>
+                <article class="comment-item d-flex flex-wrap mb-3">
+                  <div class="col-lg-1 col-sm-3 me-4 mb-3">
+                    <img src=<?= '../' . htmlspecialchars($shop['shop_photo']); ?> alt="our-store" class="img-fluid">
                   </div>
-                </div>
-              </div>
+                  <div class="col-lg-10 col-sm-9 author-wrap">
+                    <h2 class="card-title text-uppercase text-decoration-underline"><?= htmlspecialchars($shop['shop_name']); ?></h2>
+                    <ul class="list-unstyled">
+                      <li class="nav-item dropdown ">
+                        <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dirección</a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <div class="contact-address px-3">
+                              <p class="p-0 m-0"><?= htmlspecialchars($shop['shop_address']); ?> (<?= htmlspecialchars($shop['shop_city']); ?>)</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+
+                  </div>
+                </article>
+              <?php endforeach; ?>
+
             </div>
-          <?php endforeach; ?>
+          </div>
         </div>
       </div>
     </div>

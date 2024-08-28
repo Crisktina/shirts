@@ -13,7 +13,26 @@ include_once 'parts/head.html';
   tabindex="0">
   <?php include_once 'parts/header.php';
   ?>
+  <section
+    class="bg-light-blue overflow-hidden mt-5 pt-5"
+    style="
+        background-image: url('images/single-image1.png');
+        background-position: right;
+        background-repeat: no-repeat;
+      ">
+    <div class="row d-flex flex-wrap align-items-center">
+      <div class="col-md-6 col-sm-12">
+        <div class="text-content offset-4 padding-small">
 
+          <h3>¡Hola <b class="text-uppercase"><?= htmlspecialchars($_SESSION['username']); ?></b>!</h3>
+          <h2 class="display-2 pb-5 text-uppercase text-dark">
+            Tu pedidos
+          </h2>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12"></div>
+    </div>
+  </section>
   <section class="shopify-cart padding-large">
     <div class="container">
       <div class="row">

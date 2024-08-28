@@ -5,7 +5,7 @@
   <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
     <div class="container-fluid">
       <a class="navbar-brand" href="../index.php">
-        <img src="images/main-logo.png" class="logo" />
+        <img src="../public/assets/images/main-logo.png" class="logo" />
       </a>
       <button
         class="navbar-toggler d-flex d-lg-none order-3 p-2"
@@ -26,7 +26,7 @@
         aria-labelledby="bdNavbarOffcanvasLabel">
         <div class="offcanvas-header px-4 pb-0">
           <a class="navbar-brand" href="../index.php">
-            <img src="images/main-logo.png" class="logo" />
+            <img src="../public/assets/images/main-logo.png" class="logo" />
           </a>
           <button
             type="button"
@@ -39,8 +39,16 @@
           <ul
             id="navbar"
             class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link me-4 <?= ($currentPage == 'products.php') ? 'active' : '' ?>" href="products.php">Productos</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link me-4 dropdown-toggle link-dark <?= ($currentPage == 'productscamisetas.php' || $currentPage == 'productstotebags.php') ? 'active' : '' ?>" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Productos</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="productscamisetas.php" class="dropdown-item">Camisetas</a>
+                </li>
+                <li>
+                  <a href="productstotebags.php" class="dropdown-item">Totebags</a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link me-4 <?= ($currentPage == 'ourshops.php') ? 'active' : '' ?>" href="ourshops.php">Nuestras tiendas</a>

@@ -27,9 +27,6 @@
 </head>
 
 <body
-  data-bs-spy="scroll"
-  data-bs-target="#navbar"
-  data-bs-root-margin="0px 0px -40%"
   data-bs-smooth-scroll="true"
   tabindex="0">
   <header
@@ -38,7 +35,7 @@
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
-          <img src="images/main-logo.png" class="logo" />
+          <img src="public/assets/images/main-logo.png" class="logo" />
         </a>
         <button
           class="navbar-toggler d-flex d-lg-none order-3 p-2"
@@ -59,7 +56,7 @@
           aria-labelledby="bdNavbarOffcanvasLabel">
           <div class="offcanvas-header px-4 pb-0">
             <a class="navbar-brand" href="index.php">
-              <img src="images/main-logo.png" class="logo" />
+              <img src="public/assets/images/main-logo.png" class="logo" />
             </a>
             <button
               type="button"
@@ -69,12 +66,19 @@
               data-bs-target="#bdNavbar"></button>
           </div>
           <div class="offcanvas-body">
-            <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
             <ul
               id="navbar"
               class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link me-4" href="view/products.php">Productos</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Productos</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="view/productscamisetas.php" class="dropdown-item">Camisetas</a>
+                  </li>
+                  <li>
+                    <a href="view/productstotebags.php" class="dropdown-item">Totebags</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link me-4" href="view/ourshops.php">Nuestras tiendas</a>
@@ -133,7 +137,7 @@
             10% de descuento
           </h2>
           <a
-            href="view/products.php"
+            href="view/productstotebags.php"
             class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Ver productos</a>
         </div>
       </div>
@@ -151,7 +155,7 @@
           <div class="btn-right">
             <a
               href="view/products.php"
-              class="btn btn-medium btn-normal text-uppercase">Ver productos</a>
+              class="btn btn-medium btn-normal text-uppercase">Ver + productos</a>
           </div>
         </div>
         <div class="swiper product-swiper">
@@ -172,15 +176,15 @@
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
+                      <a href="view/productdetail.php?id=<?= htmlspecialchars($shirt['prod_id']); ?>" class="btn btn-medium btn-black">Ver<svg class="chevron-right">
+                          <use xlink:href="public/assets/icons/icons.svg#chevron-right"></use>
                         </svg></a>
                     </div>
                   </div>
                   <div
                     class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                     <h3 class="card-title text-uppercase">
-                      <a href="#"><?= htmlspecialchars($shirt['prod_name']); ?></a>
+                      <a href="view/productdetail.php?id=<?= htmlspecialchars($shirt['prod_id']); ?>"><?= htmlspecialchars($shirt['prod_name']); ?></a>
                     </h3>
                     <span class="item-price text-primary"><?= htmlspecialchars($shirt['prod_price']); ?> €</span>
                   </div>
@@ -203,7 +207,7 @@
           <div class="btn-right">
             <a
               href="view/products.php"
-              class="btn btn-medium btn-normal text-uppercase">Ver productos</a>
+              class="btn btn-medium btn-normal text-uppercase">Ver + productos</a>
           </div>
         </div>
         <div class="swiper product-watch-swiper">
@@ -222,15 +226,15 @@
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">
-                      <a href="#" class="btn btn-medium btn-black">Añadir<svg class="cart-outline">
-                          <use xlink:href="public/assets/icons/icons.svg#cart-outline"></use>
+                      <a href="productdetail.php?id=<?= htmlspecialchars($shirt['prod_id']); ?>" class="btn btn-medium btn-black">Ver<svg class="cart-outline">
+                          <use xlink:href="public/assets/icons/icons.svg#chevron-right"></use>
                         </svg></a>
                     </div>
                   </div>
                   <div
                     class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                     <h3 class="card-title text-uppercase">
-                      <a href="#"><?= htmlspecialchars($totebag['prod_name']); ?></a>
+                      <a href="productdetail.php?id=<?= htmlspecialchars($shirt['prod_id']); ?>"><?= htmlspecialchars($totebag['prod_name']); ?></a>
                     </h3>
                     <span class="item-price text-primary"><?= htmlspecialchars($totebag['prod_price']); ?> €</span>
                   </div>
@@ -351,7 +355,7 @@
               href="https://instagram.com/"
               class="image-link position-relative">
               <img
-                src="public/assets/images/instagram/insta-item1.jpg"
+                src="public/assets//images//instagram/insta-item1.jpg"
                 alt="instagram"
                 class="insta-image" />
               <div

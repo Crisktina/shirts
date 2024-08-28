@@ -7,9 +7,8 @@ session_start(); ?>
   data-bs-smooth-scroll="true"
   tabindex="0">
   <?php include_once 'parts/header.php'; ?>
-
   <section
-    class="bg-light-blue overflow-hidden mt-5 padding-medium"
+    class="bg-light-blue overflow-hidden mt-5 pt-5"
     style="
         background-image: url('images/single-image1.png');
         background-position: right;
@@ -17,7 +16,7 @@ session_start(); ?>
       ">
     <div class="row d-flex flex-wrap align-items-center">
       <div class="col-md-6 col-sm-12">
-        <div class="text-content offset-4 padding-medium">
+        <div class="text-content offset-4 padding-small">
           <h3>Ahora más cerca de tí</h3>
           <h2 class="display-2 pb-5 text-uppercase text-dark">
             Descubre tu tienda
@@ -27,7 +26,6 @@ session_start(); ?>
       <div class="col-md-6 col-sm-12"></div>
     </div>
   </section>
-
 
   <section id="our-store" class="padding-large">
     <div class="container">

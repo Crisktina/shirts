@@ -76,7 +76,7 @@ class Products extends Connection
                     FROM productos AS p
                     INNER JOIN stock AS s ON p.prod_id = s.prod_id
                     INNER JOIN shops AS sh ON s.shop_id = sh.shop_id
-                    WHERE p.prod_id = ?;;");
+                    WHERE p.prod_id = ?;");
             $results = [];
 
             // Execute the statement

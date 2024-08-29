@@ -42,9 +42,9 @@ include_once 'parts/head.html';
             <svg class=" m-0 p-0 " style="width: 90px; height: 90px;">
               <use xlink:href="../public/assets/icons/icons.svg#user"></use>
             </svg>
-            <h3 class="card-title text-uppercase text-decoration-underline"><?= htmlspecialchars($_SESSION['username']); ?></h3>
+            <h2 class="card-title text-uppercase text-decoration-underline"><?= htmlspecialchars($_SESSION['username']); ?></h2>
             <div class="pt-3">
-              <p><?= htmlspecialchars($_SESSION['userfullname']); ?></p>
+              <p><b><?= htmlspecialchars($_SESSION['userfullname']); ?></b></p>
             </div>
             <div>
               <p><?= htmlspecialchars($_SESSION['usermail']); ?></p>
@@ -53,7 +53,7 @@ include_once 'parts/head.html';
         </div>
         <div class="inquiry-item col-lg-6">
           <h2 class="display-7 text-uppercase text-dark">¿Quieres modificar tus datos?</h2>
-          <p>Rellena los campos en los que desees modificiar tus datos</p>
+          <p>Rellena los campos en los que desees modificar tus datos</p>
           <form class="form-group flex-wrap" action="../includes/modify-user.php" method="POST">
             <div class="col-lg-12 mb-3">
               <input type="text" id="fname" name="uid" class="form-control mt-2 mb-4 ps-3">

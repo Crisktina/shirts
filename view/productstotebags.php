@@ -47,7 +47,7 @@ session_start(); ?>
                 </div>
                 <div class="cart-concern position-absolute">
                   <div class="cart-button d-flex">
-                    <a href="productdetail.php?id=<?= htmlspecialchars($shirt['prod_id']); ?>" class=" btn btn-medium btn-black">
+                    <a href="productdetail.php?id=<?= htmlspecialchars($totebag['prod_id']); ?>" class=" btn btn-medium btn-black">
                       Ver
                       <svg class="cart-outline">
                         <use xlink:href="../public/assets/icons/icons.svg#chevron-right"></use>
@@ -57,7 +57,7 @@ session_start(); ?>
                 </div>
                 <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                   <h3 class="card-title text-uppercase">
-                    <a href="productdetail.php?id=<?= htmlspecialchars($shirt['prod_id']); ?>"><?= htmlspecialchars($totebag['prod_name']); ?></a>
+                    <a href="productdetail.php?id=<?= htmlspecialchars($totebag['prod_id']); ?>"><?= htmlspecialchars($totebag['prod_name']); ?></a>
                   </h3>
                   <span class=" item-price text-primary"><?= htmlspecialchars($totebag['prod_price']); ?> €</span>
                 </div>

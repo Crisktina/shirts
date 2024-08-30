@@ -52,4 +52,11 @@ class pedidosContr extends Pedidos
         $res = $this->getPedidos($this->userid);
         return $res;
     }
+
+    public function singlePedido($pedidoId)
+    {
+
+        $res = $this->getSinglePedido($pedidoId);
+        return $res;
+    }
 }

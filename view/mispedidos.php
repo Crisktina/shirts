@@ -6,6 +6,8 @@ if (!isset($_SESSION['username'])) {
   header("Location: login.php?nosesion");
 }
 include_once 'parts/head.html';
+require "../includes/autoload.models.php";
+require "../includes/autoload.controlers.php";
 ?>
 
 <body
@@ -33,10 +35,14 @@ include_once 'parts/head.html';
       <div class="col-md-6 col-sm-12"></div>
     </div>
   </section>
-  <?php if (isset($_GET['id'])): ?>
+  <?php if (isset($_GET['id'])):
+    $pedidoId = $_GET['id'];
+    $objeto = new PedidosContr();
+    $lineasPedido = $objeto->singlePedido($pedidoId);
+  ?>
     <section class="shopify-cart padding-large">
       <div class="container">
-        <h2 class="display-7 text-uppercase text-dark pb-4">PEDIDO REFERENCIA <b>#1</b></h2>
+        <h2 class="display-7 text-uppercase text-dark pb-4">PEDIDO REFERENCIA <b>#<?= $lineasPedido[0]['pedido_id'] ?></b></h2>
         <div class="row">
           <div class="cart-table">
             <div class="cart-header">
@@ -46,46 +52,46 @@ include_once 'parts/head.html';
                 <h3 class="cart-title col-lg-4 pb-3">Subtotal</h3>
               </div>
             </div>
-
-            <!-- Hacer bucle con las lineas de pedido -->
-            <div class="cart-item border-top border-bottom padding-small">
-              <div class="row align-items-center">
-                <div class="col-lg-5 col-md-3">
-                  <div class="cart-info d-flex flex-wrap align-items-center mb-0">
-                    <div class="col-lg-2">
-                      <div class="card-image">
-                        <img src="../public/assets/images/productos/camisetas/camiseta-item1.jpg" alt="cloth" class="img-fluid">
+            <?php foreach ($lineasPedido as $linea): ?>
+              <!-- Hacer bucle con las lineas de pedido -->
+              <div class="cart-item border-top border-bottom padding-small">
+                <div class="row align-items-center">
+                  <div class="col-lg-5 col-md-3">
+                    <div class="cart-info d-flex flex-wrap align-items-center mb-0">
+                      <div class="col-lg-2">
+                        <div class="card-image">
+                          <img src="../<?= $linea['prod_photo'] ?>" alt="foto del producto <?= $linea['prod_name'] ?>" class="img-fluid">
+                        </div>
+                      </div>
+                      <div class="col-lg-9">
+                        <div class="card-detail ps-5">
+                          <h3 class="card-title text-uppercase">
+                            <a href="#"><?= $linea['prod_name'] ?></a>
+                          </h3>
+                          <div class="card-price">
+                            <span class="money text-primary" data-currency-usd="$1200.00"><?= $linea['prod_price'] ?>€</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-lg-9">
-                      <div class="card-detail ps-5">
-                        <h3 class="card-title text-uppercase">
-                          <a href="#">Iphone 13</a>
+                  </div>
+                  <div class="col-lg-7 col-md-3">
+                    <div class="row d-flex">
+                      <div class="col-lg-5 d-flex align-items-center">
+                        <h3 class="qty-field text-uppercase">
+                          <?= $linea['quantity'] ?>
                         </h3>
-                        <div class="card-price">
-                          <span class="money text-primary" data-currency-usd="$1200.00">15.00€</span>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="total-price">
+                          <span class="money text-primary"><?= $linea['subtotal'] ?>€</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-7 col-md-3">
-                  <div class="row d-flex">
-                    <div class="col-lg-5 d-flex align-items-center">
-                      <h3 class="qty-field text-uppercase">
-                        2
-                      </h3>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="total-price">
-                        <span class="money text-primary">15.00€</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </div>
-
+            <?php endforeach; ?>
           </div>
           <div class="cart-totals bg-grey padding-medium">
             <div class="total-price pb-5">
@@ -96,7 +102,7 @@ include_once 'parts/head.html';
                     <td data-title="Subtotal">
                       <span class="price-amount amount text-primary ps-5">
                         <bdi>
-                          13/6/2024
+                          <?= $lineasPedido[0]['pedido_date'] ?>
                         </bdi>
                       </span>
                     </td>
@@ -105,7 +111,7 @@ include_once 'parts/head.html';
                     <th>Total</th>
                     <td data-title="Total">
                       <span class="price-amount amount text-primary ps-5">
-                        <bdi>150.00<span class="price-currency-symbol">€</span></bdi>
+                        <bdi><?= $lineasPedido[0]['total_price'] ?><span class="price-currency-symbol">€</span></bdi>
                       </span>
                     </td>
                   </tr>
@@ -127,8 +133,6 @@ include_once 'parts/head.html';
         <table cellspacing="0" class="table text-uppercase">
           <tbody>
             <?php
-            require "../includes/autoload.models.php";
-            require "../includes/autoload.controlers.php";
             $userid =  $_SESSION['userID'];
             $objeto = new PedidosContr();
             $allPedidos = $objeto->setUserid($userid);

@@ -35,11 +35,21 @@ require "../includes/autoload.controlers.php";
       <div class="col-md-6 col-sm-12"></div>
     </div>
   </section>
-  <?php if (isset($_GET['id'])):
+  <?php
+  if (isset($_SESSION['cart'])): ?>
+    <section class="padding-large">
+      <div class="container">
+        <h2 class="display-7 text-uppercase text-dark pb-4"><a href="pedidoencurso.php">PEDIDO EN CURSO >></a></h2>
+        <hr>
+      </div>
+    </section>
+  <?php endif;
+  if (isset($_GET['id'])):
     $pedidoId = $_GET['id'];
     $objeto = new PedidosContr();
     $lineasPedido = $objeto->singlePedido($pedidoId);
   ?>
+
     <section class="shopify-cart padding-large">
       <div class="container">
         <h2 class="display-7 text-uppercase text-dark pb-4">PEDIDO REFERENCIA <b>#<?= $lineasPedido[0]['pedido_id'] ?></b></h2>
@@ -137,31 +147,38 @@ require "../includes/autoload.controlers.php";
             $objeto = new PedidosContr();
             $allPedidos = $objeto->setUserid($userid);
             $allPedidos = $objeto->allPedidos();
-            foreach ($allPedidos as $pedido):
+            if (empty($allPedidos)): // Verifica si la lista de pedidos está vacía
             ?>
-              <!-- Hacer bucle con los pedidos anteriores -->
-              <tr class="order-total pt-2 pb-2 border-bottom">
-                <th><a href="mispedidos.php?id=<?= htmlspecialchars($pedido['pedido_id']) ?>">Referencia: <span class="text-primary ps-5">
-                      #<?= $pedido['pedido_id'] ?>
-                    </span></a></th>
-                <td data-title="Total"> FECHA:
-                  <span class="text-primary ps-5">
-                    <?= $pedido['pedido_date'] ?>
-                  </span>
-                </td>
-                <td data-title="Total">PRECIO:
-                  <span class="price-amount amount text-primary ps-5">
-                    <bdi><?= $pedido['total_price'] ?><span class="price-currency-symbol">€</span></bdi>
-                  </span>
-                </td>
+              <tr>
+                <td colspan="3" class="text-center">¡Vaya! todavía no tienes ningún pedido en tu lista. <br> Consulta nuestros productos para crear uno.</td>
               </tr>
-            <?php endforeach; ?>
+              <?php
+            else:
+              foreach ($allPedidos as $pedido):
+              ?>
+                <!-- Hacer bucle con los pedidos anteriores -->
+                <tr class="order-total pt-2 pb-2 border-bottom">
+                  <th><a href="mispedidos.php?id=<?= htmlspecialchars($pedido['pedido_id']) ?>">Referencia: <span class="text-primary ps-5">
+                        #<?= $pedido['pedido_id'] ?>
+                      </span></a></th>
+                  <td data-title="Total"> FECHA:
+                    <span class="text-primary ps-5">
+                      <?= $pedido['pedido_date'] ?>
+                    </span>
+                  </td>
+                  <td data-title="Total">PRECIO:
+                    <span class="price-amount amount text-primary ps-5">
+                      <bdi><?= $pedido['total_price'] ?><span class="price-currency-symbol">€</span></bdi>
+                    </span>
+                  </td>
+                </tr>
+            <?php endforeach;
+            endif; ?>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
 
   <?php include_once 'parts/footer.html'; ?>
   <script src="../public/js/jquery-1.11.0.min.js"></script>

@@ -330,9 +330,9 @@ class UserContr extends User
 
         //Set the subject line
         $mail->Subject = 'New Password';
-
+        //echo env::HOSTPATH;
         //Replace the plain text body with one created manually
-        $mail->msgHTML("<a href='http://localhost:8888/shirts/view/newpassword.php?token=$token'>link para crear nueva contraseña</a>");
+        $mail->msgHTML("<a href=" . env::HOSTPATH . "view/newpassword.php?token=$token'>link para crear nueva contraseña</a>");
 
 
         //send the message, check for errors
@@ -389,7 +389,7 @@ class UserContr extends User
         //Replace the plain text body with one created manually 
         // !!!!!!!!!!!!!!!! Remplazar localhost por uno que funcione, el 8888 es del mac
         $mail->msgHTML("<h2>Bienvenido/a</h2>
-<p>Para continuar con el proceso de resgistro se tiene de activar la cuenta. A continuación te dejamos el enlace.</p><a href='http://localhost:8888/shirts/includes/activacio.php?token=$token'>activa Tu cuenta</a>");
+<p>Para continuar con el proceso de resgistro se tiene de activar la cuenta. A continuación te dejamos el enlace.</p><a href=" . env::HOSTPATH . "includes/activacio.php?token=$token'>activa Tu cuenta</a>");
 
 
         //send the message, check for errors

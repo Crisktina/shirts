@@ -32,30 +32,29 @@ class pedidosContr extends Pedidos
     }
 
     /*** */
-
     public function newPedido()
     {
+        // Insertar pedido y obtener el ID del nuevo pedido
+        $pedidoId = $this->setPedido($this->totalprice, $this->userid);
 
-        //validation user id?
-
-        //setPedido to DB
-        if ($this->setPedido($this->totalprice, $this->userid)) {
-
-            header("Location: ../view/mispedidos.php?error=FailedStmt");
+        // Verificar si se obtuvo un ID válido
+        if ($pedidoId === false) {
+            error_log("Fallo al insertar o devolver el id del pedido.");
+            header("Location: ../view/mispedidos.php?error=FailedStmtPedido");
             exit();
         }
+
+        return $pedidoId;
     }
 
     public function allPedidos()
     {
-
         $res = $this->getPedidos($this->userid);
         return $res;
     }
 
     public function singlePedido($pedidoId)
     {
-
         $res = $this->getSinglePedido($pedidoId);
         return $res;
     }

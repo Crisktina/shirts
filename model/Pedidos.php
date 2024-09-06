@@ -4,14 +4,31 @@ class Pedidos extends Connection
 
     protected function setPedido($totalprice, $userid)
     {
-        $error = false;
-        $stmt = $this->connect()->prepare("INSERT INTO pedidos (total_price, user_id) VALUES (?,?)");
+        try {
+            // Obtener la conexión una sola vez
+            $conn = $this->connect();
 
-        if (!$stmt->execute(array($totalprice, $userid))) {
-            $error = true;
+            // Preparar la consulta SQL
+            $stmt = $conn->prepare("INSERT INTO pedidos (total_price, user_id) VALUES (?, ?)");
+
+            // Ejecutar la consulta con los valores proporcionados
+            if ($stmt->execute([$totalprice, $userid])) {
+                // Obtener el ID del último pedido insertado
+                $lastInsertId = $conn->lastInsertId();
+                return $lastInsertId;
+            } else {
+                // Manejo de errores si la inserción falla
+                error_log("Error al insertar el pedido.");
+                return false;
+            }
+        } catch (PDOException $e) {
+            // Manejar cualquier excepción y registrar el error
+            error_log("Database error: " . $e->getMessage());
+            return false;
+        } finally {
+            // Liberar la declaración
+            $stmt = null;
         }
-        $stmt = null;
-        return $error;
     }
 
     //traer lista de pedidos de la bbdd 

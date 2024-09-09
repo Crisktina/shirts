@@ -67,7 +67,7 @@ class Pedidos extends Connection
     {
         try {
             // Prepare the SQL statement
-            $stmt = $this->connect()->prepare("SELECT p.pedido_id, p.pedido_date, p.total_price, pr.prod_name, pr.prod_price, pr.prod_photo, l.quantity, l.import_price AS subtotal 
+            $stmt = $this->connect()->prepare("SELECT p.pedido_id, p.pedido_date, p.total_price, pr.prod_id, pr.prod_name, pr.prod_price, pr.prod_photo, l.quantity, l.import_price AS subtotal 
             FROM pedidos AS p
             INNER JOIN lineaspedido AS l ON l.pedido_id = p.pedido_id 
             INNER JOIN productos AS pr ON pr.prod_id = l.prod_id

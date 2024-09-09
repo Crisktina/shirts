@@ -63,6 +63,7 @@ require "../includes/autoload.controlers.php";
               </div>
             </div>
             <?php foreach ($lineasPedido as $linea): ?>
+
               <!-- Hacer bucle con las lineas de pedido -->
               <div class="cart-item border-top border-bottom padding-small">
                 <div class="row align-items-center">

@@ -52,7 +52,7 @@ require "../includes/autoload.controlers.php";
 
     <section class="shopify-cart padding-large">
       <div class="container">
-        <h2 class="display-7 text-uppercase text-dark pb-4">PEDIDO REFERENCIA <b>#<?= $lineasPedido[0]['pedido_id'] ?></b></h2>
+        <h2 class="display-7 text-uppercase text-dark pb-4">PEDIDO REFERENCIA <b>#<?= htmlspecialchars($lineasPedido[0]['pedido_id']) ?></b></h2>
         <div class="row">
           <div class="cart-table">
             <div class="cart-header">
@@ -70,16 +70,16 @@ require "../includes/autoload.controlers.php";
                     <div class="cart-info d-flex flex-wrap align-items-center mb-0">
                       <div class="col-lg-2">
                         <div class="card-image">
-                          <img src="../<?= $linea['prod_photo'] ?>" alt="foto del producto <?= $linea['prod_name'] ?>" class="img-fluid">
+                          <img src="../<?= htmlspecialchars($linea['prod_photo']) ?>" alt="foto del producto <?= htmlspecialchars($linea['prod_name']) ?>" class="img-fluid">
                         </div>
                       </div>
                       <div class="col-lg-9">
                         <div class="card-detail ps-5">
                           <h3 class="card-title text-uppercase">
-                            <a href="#"><?= $linea['prod_name'] ?></a>
+                            <a href="productdetail.php?id=<?= intval($linea['prod_id']) ?>"><?= htmlspecialchars($linea['prod_name']) ?></a>
                           </h3>
                           <div class="card-price">
-                            <span class="money text-primary" data-currency-usd="$1200.00"><?= $linea['prod_price'] ?>€</span>
+                            <span class="money text-primary" data-currency-usd="$1200.00"><?= htmlspecialchars($linea['prod_price']) ?>€</span>
                           </div>
                         </div>
                       </div>
@@ -89,12 +89,12 @@ require "../includes/autoload.controlers.php";
                     <div class="row d-flex">
                       <div class="col-lg-5 d-flex align-items-center">
                         <h3 class="qty-field text-uppercase">
-                          <?= $linea['quantity'] ?>
+                          <?= htmlspecialchars($linea['quantity']) ?>
                         </h3>
                       </div>
                       <div class="col-lg-6">
                         <div class="total-price">
-                          <span class="money text-primary"><?= $linea['subtotal'] ?>€</span>
+                          <span class="money text-primary"><?= htmlspecialchars($linea['subtotal']) ?>€</span>
                         </div>
                       </div>
                     </div>
@@ -112,7 +112,7 @@ require "../includes/autoload.controlers.php";
                     <td data-title="Subtotal">
                       <span class="price-amount amount text-primary ps-5">
                         <bdi>
-                          <?= $lineasPedido[0]['pedido_date'] ?>
+                          <?= htmlspecialchars($lineasPedido[0]['pedido_date']) ?>
                         </bdi>
                       </span>
                     </td>
@@ -121,7 +121,7 @@ require "../includes/autoload.controlers.php";
                     <th>Total</th>
                     <td data-title="Total">
                       <span class="price-amount amount text-primary ps-5">
-                        <bdi><?= $lineasPedido[0]['total_price'] ?><span class="price-currency-symbol">€</span></bdi>
+                        <bdi><?= htmlspecialchars($lineasPedido[0]['total_price']) ?><span class="price-currency-symbol">€</span></bdi>
                       </span>
                     </td>
                   </tr>
@@ -163,12 +163,12 @@ require "../includes/autoload.controlers.php";
                       </span></a></th>
                   <td data-title="Total"> FECHA:
                     <span class="text-primary ps-5">
-                      <?= $pedido['pedido_date'] ?>
+                      <?= htmlspecialchars($pedido['pedido_date']) ?>
                     </span>
                   </td>
                   <td data-title="Total">PRECIO:
                     <span class="price-amount amount text-primary ps-5">
-                      <bdi><?= $pedido['total_price'] ?><span class="price-currency-symbol">€</span></bdi>
+                      <bdi><?= htmlspecialchars($pedido['total_price']) ?><span class="price-currency-symbol">€</span></bdi>
                     </span>
                   </td>
                 </tr>

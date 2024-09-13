@@ -29,10 +29,5 @@ if (isset($_GET['error'])) {
 } elseif (isset($_GET['newPassword']) == 'Success') {
     $sendOk = "<div class=\"alert alert-success\" role=\"alert\">Nueva contraseña creada. Introduce tu nueva contraseña para iniciar sessión.</div>";
 } elseif (isset($_GET['success-register'])) {
-    $sendOk = "<div class=\"alert alert-success\" role=\"alert\">Revisa tu correo electronico antes de iniciar sessión. Para terminar con el proceso de resgistro se tiene de activar la cuenta.</div>";
+    $sendOk = "<div class=\"alert alert-success\" role=\"alert\">Revisa tu correo electrónico antes de iniciar sessión. Para terminar con el proceso de registro se tiene que activar la cuenta.</div>";
 }
-
-
-// else {
-//     $userClassErr = $passClassErr = 'is-valid';
-// }

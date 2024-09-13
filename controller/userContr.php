@@ -389,19 +389,16 @@ class UserContr extends User
         //Replace the plain text body with one created manually 
         // !!!!!!!!!!!!!!!! Remplazar localhost por uno que funcione, el 8888 es del mac
         $mail->msgHTML("<h2>Bienvenido/a</h2>
-<p>Para continuar con el proceso de resgistro se tiene de activar la cuenta. A continuación te dejamos el enlace.</p><a href='http://localhost:8888/shirts/includes/activacio.php?token=$token'>activa Tu cuenta</a>");
+<p>Para continuar con el proceso de registro se tiene de activar la cuenta. A continuación te dejamos el enlace.</p><a href='http://localhost:8888/shirts/includes/activacio.php?token=$token'>activa Tu cuenta</a>");
 
 
         //send the message, check for errors
         if (!$mail->send()) {
-            // echo 'Mailer Error: ' . $mail->ErrorInfo;
             header("Location: ../view/register.html?error=Mailer Error");
             exit();
         } else {
-            //TODO: mostrar mensaje conforme el usuario tiene que activar la cuenta para que pueda hacer login
-            //header("Location: ../includes/activacio.php?msg=Message sent!");
-            //exit();
-
+            header("Location: ../view/login.php?msg=Message sent!");
+            exit();
         }
     }
 

@@ -88,7 +88,7 @@ Para ejecutar este proyecto de manera local, sigue estos pasos:
    ![Usuario](documents/demoUsuario2.mp4)
 4. Visita tu perfil, puedes modificar tus datos de usuario.
    ![Visita tu perfil](documents/demoPerfi.mp4)
-5. En el apartador nuestras tiendas, puedes ver las tiendas de venta del producto. Además en cada detalle de producto te dice si hay stock en ellas.
+5. En el apartado nuestras tiendas, puedes ver las tiendas de venta del producto. Además en cada detalle de producto te dice si hay stock en ellas.
    ![Visita tu perfil](documents/demoTiendas.mp4)
 6. Añade productos al carrito y finaliza tu pedido.
    ![Realizar pedido](documents/demoPedido.mp4)

@@ -1,6 +1,6 @@
 # Tu-Shirt! :tshirt:
 
-**Tu-Shirt!** es una página web que gestiona una tienda online de camisetas y totebags con frases ingeniosas estampadas. Permite a los usuarios registrase y tener un perfil personal, navegar por el catálogo, ver los puntos de venta, consultar si hay stock en estas tiendas, añadir productos al carrito y finalizar el pedido. La aplicación está construida utilizando un enfoque **MVC (Model-View-Controller)** con **Programación Orientada a Objetos (POO)**, lo que asegura una estructura organizada y escalable.
+**Tu-Shirt!** es una página web que gestiona una tienda online de camisetas y totebags con frases ingeniosas estampadas. Permite a los usuarios registrase y tener un perfil personal, navegar por el catálogo, ver los puntos de venta, consultar si hay stock en estas tiendas, añadir productos al carrito y finalizar el pedido. La aplicación está construida utilizando un enfoque **MVC (Model-View-Controller)** con **Programación Orientada a Objetos (POO)**, lo que asegura una estructura organizada y escalable. Además tiene un diseño adaptable a diferentes dispositivos.
 
 ## Web
 
@@ -80,10 +80,21 @@ Para ejecutar este proyecto de manera local, sigue estos pasos:
 
 ## Uso
 
-1. Visita `http://localhost:8000` en tu navegador.
-2. Navega por el catálogo de productos.
+1. Visita la web en este [link](http://147.83.7.203/cristina/shirts/index.php). En el caso de que hayas instalado el repositorio de Github visita `http://localhost:8000` en tu navegador.
+2. Navega por el catálogo de productos sin necesidad de registrar-te como usuario.
+   ![Ver productos](documents/demoProducts.mp4)
 3. Registra-te como usuario y haz login.
-4. Añade productos al carrito y finaliza tu pedido.
+   ![Usuario](documents/demoUsuario1.mp4)
+   ![Usuario](documents/demoUsuario2.mp4)
+4. Visita tu perfil, puedes modificar tus datos de usuario.
+   ![Visita tu perfil](documents/demoPerfi.mp4)
+5. En el apartador nuestras tiendas, puedes ver las tiendas de venta del producto. Además en cada detalle de producto te dice si hay stock en ellas.
+   ![Visita tu perfil](documents/demoTiendas.mp4)
+6. Añade productos al carrito y finaliza tu pedido.
+   ![Realizar pedido](documents/demoPedido.mp4)
+7. Si has olvidado tu password la puedes recuperar.
+   ![Usuario](documents/demoNewPassword.mp4)
+   ![Usuario](documents/demoNewPassword2.mp4)
 
 ---
 
@@ -91,3 +102,4 @@ Para ejecutar este proyecto de manera local, sigue estos pasos:
 
 Este proyecto ha sido desarrollado por [Cristina Hidalgo](https://github.com/Crisktina) como parte de un ejercicio de aprendizaje de **desarrollo web** para el curso IFCD0210 - FOAP de Desarrollo de aplicaciones con tecnología web.
 Puedes visitar el repositorio completo en este [link](https://github.com/Crisktina/shirts).
+Puedes visitar la web en este [link](http://147.83.7.203/cristina/shirts/index.php).

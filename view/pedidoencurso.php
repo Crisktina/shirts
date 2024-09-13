@@ -9,7 +9,7 @@ include_once 'parts/head.html';
 
 <body data-bs-smooth-scroll="true" tabindex="0">
     <?php include_once 'parts/header.php'; ?>
-    <section class="bg-light-blue overflow-hidden mt-5 pt-5" style="background-image: url('images/single-image1.png'); background-position: right; background-repeat: no-repeat;">
+    <section class="bg-light-blue overflow-hidden mt-5 pt-5">
         <div class="row d-flex flex-wrap align-items-center">
             <div class="col-md-6 col-sm-12">
                 <div class="text-content offset-4 padding-small">

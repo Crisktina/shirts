@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['userID'])) {
         newSession($usarioAllData);
 
         //Volver a la pagina
-        header("Location: ../view/profile.php?success-nickname");
+        header("Location: ../view/profile.php?success=nickname");
     }
 
     if (isset($_POST["update_email"])) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['userID'])) {
         newSession($usarioAllData);
 
         //Volver a la pagina
-        header("Location: ../view/profile.php?success-email");
+        header("Location: ../view/profile.php?success=email");
     }
 
     if (isset($_POST["update_fullname"])) {
@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['userID'])) {
         newSession($usarioAllData);
 
         //Volver a la pagina
-        header("Location: ../view/profile.php?success-userfullname");
+        header("Location: ../view/profile.php?success=userfullname");
     }
 }
 

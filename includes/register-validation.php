@@ -47,6 +47,4 @@ if (isset($_GET['error'])) {
             $userClassErr = $fullnClassErr = $emailClassErr = $passClassErr = $passRClassErr = "is-invalid";
             break;
     }
-} 
-//   else {  $userClassErr = $passClassErr = 'is-valid';
-// }
+}

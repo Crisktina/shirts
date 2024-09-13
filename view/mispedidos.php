@@ -16,12 +16,7 @@ require "../includes/autoload.controlers.php";
   <?php include_once 'parts/header.php';
   ?>
   <section
-    class="bg-light-blue overflow-hidden mt-5 pt-5"
-    style="
-        background-image: url('images/single-image1.png');
-        background-position: right;
-        background-repeat: no-repeat;
-      ">
+    class="bg-light-blue overflow-hidden mt-5 pt-5">
     <div class="row d-flex flex-wrap align-items-center">
       <div class="col-md-6 col-sm-12">
         <div class="text-content offset-4 padding-small">
@@ -35,6 +30,15 @@ require "../includes/autoload.controlers.php";
       <div class="col-md-6 col-sm-12"></div>
     </div>
   </section>
+  <?php
+  if (isset($_GET['success-confirm-cart'])): ?>
+    <section class="padding-large">
+      <div class="container">
+        <p class="display-7 text-uppercase text-dark pb-4">¡Tu pedido ha sido procesado con éxito!</p>
+        <hr>
+      </div>
+    </section>
+  <?php endif; ?>
   <?php
   if (isset($_SESSION['cart'])): ?>
     <section class="padding-large">

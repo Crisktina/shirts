@@ -14,12 +14,7 @@ include_once 'parts/head.html';
   <?php include_once 'parts/header.php';
   ?>
   <section
-    class="bg-light-blue overflow-hidden mt-5 pt-5"
-    style="
-        background-image: url('images/single-image1.png');
-        background-position: right;
-        background-repeat: no-repeat;
-      ">
+    class="bg-light-blue overflow-hidden mt-5 pt-5">
     <div class="row d-flex flex-wrap align-items-center">
       <div class="col-md-6 col-sm-12">
         <div class="text-content offset-4 padding-small">
@@ -33,7 +28,18 @@ include_once 'parts/head.html';
       <div class="col-md-6 col-sm-12"></div>
     </div>
   </section>
-
+  <?php
+  include_once '../includes/profile-validation.php';
+  if (isset($_GET['success'])): ?>
+    <section class="padding-large">
+      <div class="container">
+        <p class="display-7 text-uppercase text-dark pb-4">
+          <?= htmlspecialchars($successMsg); ?>
+        </p>
+        <hr>
+      </div>
+    </section>
+  <?php endif; ?>
   <div class="padding-large">
     <div class="container">
       <div class="row">
@@ -56,15 +62,18 @@ include_once 'parts/head.html';
           <p>Rellena los campos en los que desees modificar tus datos</p>
           <form class="form-group flex-wrap" action="../includes/modify-user.php" method="POST">
             <div class="col-lg-12 mb-3">
-              <input type="text" id="fname" name="uid" class="form-control mt-2 mb-4 ps-3">
+              <input type="text" id="fname" name="uid" class="form-control mt-2 mb-4 ps-3 <?= htmlspecialchars($userClassErr); ?>">
+              <?= $userErr; ?>
               <input class="btn btn-dark btn-medium text-uppercase btn-rounded-none" type="submit" name="update_nickname" value="Actualizar Nickname">
             </div>
             <div class="col-lg-12 mb-3">
-              <input type="text" id="fullname" name="userfullname" class="form-control mt-2 mb-4 ps-3">
+              <input type="text" id="fullname" name="userfullname" class="form-control mt-2 mb-4 ps-3 <?= htmlspecialchars($fullnClassErr); ?>">
+              <?= $fullnErr; ?>
               <input class="btn btn-dark btn-medium text-uppercase btn-rounded-none" type="submit" name="update_fullname" value="Actualizar Nombre">
             </div>
             <div class="col-lg-12 mb-3">
-              <input type="email" id="email" name="email" class="form-control mt-2 mb-4 ps-3">
+              <input type="email" id="email" name="email" class="form-control mt-2 mb-4 ps-3 <?= htmlspecialchars($emailClassErr); ?>">
+              <?= $emailErr; ?>
               <input class="btn btn-dark btn-medium text-uppercase btn-rounded-none" type="submit" name="update_email" value="Actualizar Email">
             </div>
           </form>
